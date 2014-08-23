@@ -1,0 +1,65 @@
+
+<header>    
+	<div id="navOne" class="navbar navbar-wp" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+            	<button type="button" class="navbar-toggle navbar-toggle-aside-menu">
+                    <i class="fa fa-outdent icon-custom"></i>
+                </button>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+
+<%=  link_to "#{image_tag ('boomerang-logo-dark.png')}".html_safe , root_path, class: "navbar-brand" %>
+
+                
+            </div>
+          
+          
+        
+         
+            
+           
+                  <div class="navbar-collapse collapse">
+              
+              <ul class="nav navbar-nav navbar-right hidden-xs">  
+              	<% if user_signed_in? %>
+              	
+              		<li>
+              		<%= link_to 'Logout' , destroy_user_session_path ,:method => :delete %>
+              	</li>	
+              	
+              	<li>
+              		<%= link_to 'Update Profile' , edit_user_registration_path %>
+              	</li>
+              	<% else %>
+              	<li>
+              		<%= link_to 'Login' , new_user_session_path %>
+              	</li>	            		
+               		<li>
+               				
+              		<%= link_to 'Sign Up' , new_user_registration_path %>
+              	</li>	
+                       <li>
+                        <a href="#" id="cmdAsideMenu" class="dropdown-toggle dropdown-form-toggle" title="Open sidebar">
+                        	<i class="fa fa-outdent"></i>
+                        </a>
+                        </li>
+                        <% end %>
+               </ul>
+               </div>
+              
+               </div>
+               
+               
+            </div><!--/.nav-collapse -->
+            
+            
+        
+            	
+      
+</header>

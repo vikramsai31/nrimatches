@@ -1,0 +1,21 @@
+<div class="top-header">
+	<div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+           
+            	<nav class="top-header-menu">
+                    <ul class="menu">
+                        <li>
+                        	<% if user_signed_in? %> 
+                        	<%= current_user.email%>
+                        	 <%= link_to "Sign Out!!", destroy_user_session_path, :method => :delete  %>
+                        	<% else%>
+                        	<%= link_to 'Login', new_user_session_path%>
+                        	<% end %>
+                        	</li>
+                    </ul>
+				</nav>
+            </div>
+        </div>
+    </div>
+</div>

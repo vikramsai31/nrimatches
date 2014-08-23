@@ -1,0 +1,59 @@
+          <div class="col-md-8 col-md-offset-2 col-sm-6 col-sm-offset-3">
+                        <div class="w-section inverse">                       
+                            <div class="w-box sign-in-wr bg-5">
+                                
+                                <div class="form-header">
+                                    <h2>Create your own account</h2>
+                                </div>
+                                <div class="form-body">
+                                    <p>
+ Introducing a revolutionary way to find your perfect match - Search and talk 100% free to all potential matches.                                  
+                                    </p>
+<h3>Sign Up</h3>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+   html: {class:"form-light padding-15"}) do |f| %>
+             <div class="row">
+             	 <%= devise_error_messages! %>
+
+                         
+ 
+                                                <div class="form-group">
+                                                    <label for="Lastname">Email</label>
+         <%= f.email_field :email, autofocus: true, :class => "form-control",:placeholder => "Email" %>                                           
+                                                </div>
+                                          
+
+ 
+                                            
+                                                <div class="form-group">
+                                                    <label for="pass">Password</label>
+       
+           <%= f.password_field :password, autocomplete: "off",:class => "form-control" ,
+           :placeholder => "password", :id=>"pass"%>
+                                                </div>
+                                         
+                                           
+  
+   
+   
+   
+         <div class="form-group">
+           <label for="pass">Password Confirmation</label>
+  <%= f.password_field :password_confirmation, autocomplete: "off",
+  :class => "form-control",:placeholder => "password" , :id=>"pass2"%>
+                                                </div>
+                                          
+       
+
+   <div class="row">
+                                            <div class="col-md-6">
+          <label class="checkbox persistent"><input type="checkbox"> I accept the <a href="terms.html">terms and conditions of this website.</a></label>                        
+                                            </div>
+                                            <div class="col-md-6">
+           
+            <%= f.submit "Sign Up Free Now!", :class=>"btn btn-two pull-right" %>                      
+                                            </div>
+                                            </div>
+<% end %>
+
+
