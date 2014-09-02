@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
   before_action :set_member, only: [:show,:edit, :update, :destroy]
 
   # GET /members
@@ -67,9 +68,16 @@ class MembersController < ApplicationController
   end
   
    def update_select_state
-   @states = State.where(:country_id => params[:id]).order(:name) unless params[:id].blank?
-   @states.inspect
-   render :partial => "members/states", :locals => {:states => @states}
+     if params[:country_id].present?
+   @country = Country.find(params[:country_id])
+   @states = @country.states
+   # @states = State.where(:country_id => params[:id]).order(:name) unless params[:id].blank?
+   puts @states.inspect
+   else
+     @states = []
+   end
+    
+  render :partial => "members/states", :locals => {:states => @states}
    end 
    
 
@@ -81,7 +89,8 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:firstname, :lastname, :user_id, :dob,:gender,:country_id,
-      :state_id,:city,:height,:weight,:complexion,photos_attributes: [:member_id,:data_file_name,:data_content_type,:data_file_size])
+      params.require(:member).permit(:firstname, :lastname, :user_id, :dob,:gender,:l_country_id,
+      :l_state_id,:l_city,:g_country_id,:residency_status,:body_type,:marital_status,
+       :community,:sub_community,:diet,:smoke,:drink,:education,:working_as,:working_with,:height,:weight,:complexion,photos_attributes: [:member_id,:data])
     end
 end

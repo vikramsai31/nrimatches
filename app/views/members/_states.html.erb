@@ -1,9 +1,14 @@
-<%= form_for(:member, :remote => true ) do |f| %>
+<%= form_for(:member, :remote => true) do |f| %>
   
 <% if !@states.blank? %>
 <%= f.select :state_id, options_for_select(@states.collect{|s| [s.name,s.id]}),{},:class => "form-control" %>
 <% else %>
- <%= f.select :member,:state_id, option_tags = nil, options = {:prompt => "Select State",:class => "form-control"}) %>
-    <% end %>
+
+  <%= f.select( :state_id,
+       State.all.collect{ |c| [c.name,c.id]},{prompt: 'Select State'},
+       {class: "form-control"}
+      ) %> 
+
+    <% end%>
  
 <% end %>

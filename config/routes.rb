@@ -1,6 +1,6 @@
 Match::Application.routes.draw do
   resources :members
-  match 'members/update_select_state/:id', :controller=> 'members', :action => 'update_select_state',:via => [:get]
+  match 'members/update_select_state/:country_id', :controller=> 'members', :action => 'update_select_state',:via => [:get]
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

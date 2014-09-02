@@ -1,3 +1,4 @@
 class State < ActiveRecord::Base
   belongs_to :country
+  attr_accessible :country_id
 end
