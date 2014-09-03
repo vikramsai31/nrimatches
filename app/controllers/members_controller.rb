@@ -91,6 +91,6 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:firstname, :lastname, :user_id, :dob,:gender,:l_country_id,
       :l_state_id,:l_city,:g_country_id,:residency_status,:body_type,:marital_status,
-       :community,:sub_community,:diet,:smoke,:drink,:education,:working_as,:working_with,:height,:weight,:complexion,photos_attributes: [:member_id,:data])
+       :community,:sub_community,:diet,:smoke,:drink,:education,:working_as,:working_with,:mobile_no,:about_yourself,:disability,:height,:weight,:complexion,photos_attributes: [:member_id,:data])
     end
 end
