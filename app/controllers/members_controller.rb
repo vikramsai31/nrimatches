@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    #@members = Member.all
   end
 
   # GET /members/1
@@ -22,7 +22,9 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+    
     @member = Member.find(params[:id])
+    
  5.times { @member.photos.build }
   end
 
@@ -34,11 +36,13 @@ class MembersController < ApplicationController
     respond_to do |format|
       if @member.save
         format.html { redirect_to root_path, notice: 'Member was successfully created.' }
-        format.js   {}
         format.json { render action: 'show', status: :created, location: @member }
+        format.js {render :js => "window.location.href='"+root_path+"'"}
+        
       else
         format.html { render action: 'new' }
         format.json { render json: @member.errors, status: :unprocessable_entity }
+        format.js   
       end
     end
   end
@@ -50,9 +54,11 @@ class MembersController < ApplicationController
       if @member.update(member_params)
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
         format.json { head :no_content }
+        format.js {render :js => "window.location.href='"+root_path+"'"}
       else
         format.html { render action: 'edit' }
         format.json { render json: @member.errors, status: :unprocessable_entity }
+        format.js 
       end
     end
   end
@@ -79,6 +85,7 @@ class MembersController < ApplicationController
     
   render :partial => "members/states", :locals => {:states => @states}
    end 
+
    
 
   private
@@ -90,7 +97,7 @@ class MembersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
       params.require(:member).permit(:firstname, :lastname, :user_id, :dob,:gender,:l_country_id,
-      :l_state_id,:l_city,:g_country_id,:residency_status,:body_type,:marital_status,
+      :l_state_id,:l_city,:g_country_id,:residency_status,:body_type,:marital_status,:age,
        :community,:sub_community,:diet,:smoke,:drink,:education,:working_as,:working_with,:mobile_no,:about_yourself,:disability,:height,:weight,:complexion,photos_attributes: [:member_id,:data])
     end
 end

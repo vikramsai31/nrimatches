@@ -101,8 +101,9 @@ CREATE TABLE `members` (
   `working_with` char(10) DEFAULT NULL,
   `about_yourself` text,
   `disability` char(1) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,6 +112,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
+INSERT INTO `members` VALUES (88,'vikram','pendyam',2,'1983-03-09','2014-09-06 17:47:13','2014-09-06 23:07:47','male',233,NULL,'dublin',73,203,'Pale White',107,'citizen','Divorced','abc','Athletic','abc','nonveg','no','no','lhs','engineer','6462034289','Private','hi this is vikram','n',31);
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +133,7 @@ CREATE TABLE `photos` (
   `data_file_size` int(11) DEFAULT NULL,
   `data_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,6 +142,7 @@ CREATE TABLE `photos` (
 
 LOCK TABLES `photos` WRITE;
 /*!40000 ALTER TABLE `photos` DISABLE KEYS */;
+INSERT INTO `photos` VALUES (10,88,'wed6.png','2014-09-07 02:58:54','2014-09-07 02:58:54','image/png',317520,'2014-09-07 02:58:53'),(11,88,'wed7.png','2014-09-09 03:46:02','2014-09-09 03:46:02','image/png',291005,'2014-09-09 03:46:01');
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-03  8:05:27
+-- Dump completed on 2014-09-09 22:22:44

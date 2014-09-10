@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
    attr_accessible :email, :password, :password_confirmation, :remember_me,:firstname,:lastname,:country_id,:state_id
    belongs_to :country
+   has_one :member
    
 end

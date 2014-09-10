@@ -1,0 +1,13 @@
+ var el = $('#new_member');
+ 
+ <% if @member.errors.any? %>
+ 
+    var errors = $('<ul />');
+     <% @member.errors.full_messages.each do |msg| %>
+    
+       errors.append('<li><%= escape_javascript( msg ) %></li>');
+      <% end %>
+    
+      el.find('#errors').html(errors);
+      $("html, body").animate({ scrollTop: 0 }, "fast");
+  <% end %>
