@@ -1,22 +1,25 @@
 class MembersController < ApplicationController
   skip_before_filter  :verify_authenticity_token
+    before_action :authenticate_user!
   before_action :set_member, only: [:show,:edit, :update, :destroy]
 
   # GET /members
   # GET /members.json
   def index
-    #@members = Member.all
+    @members = Member.all
   end
 
   # GET /members/1
   # GET /members/1.json
   def show
+    @member = Member.find(params[:id])
+    
   end
 
   # GET /members/new
   def new
     @member = Member.new
-    5.times { @member.photos.build }
+    
     
   end
 
@@ -24,8 +27,6 @@ class MembersController < ApplicationController
   def edit
     
     @member = Member.find(params[:id])
-    
- 5.times { @member.photos.build }
   end
 
   # POST /members
@@ -51,10 +52,9 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1.json
   def update
     respond_to do |format|
-      if @member.update(member_params)
+      if @member.update_attributes(member_params)
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
         format.json { head :no_content }
-        format.js {render :js => "window.location.href='"+root_path+"'"}
       else
         format.html { render action: 'edit' }
         format.json { render json: @member.errors, status: :unprocessable_entity }
@@ -98,6 +98,7 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:firstname, :lastname, :user_id, :dob,:gender,:l_country_id,
       :l_state_id,:l_city,:g_country_id,:residency_status,:body_type,:marital_status,:age,
-       :community,:sub_community,:diet,:smoke,:drink,:education,:working_as,:working_with,:mobile_no,:about_yourself,:disability,:height,:weight,:complexion,photos_attributes: [:member_id,:data])
+       :community,:sub_community,:diet,:smoke,:drink,:education,:working_as,
+       :working_with,:mobile_no,:about_yourself,:disability,:height,:weight,:complexion,photos_attributes: [:member,:data])
     end
 end

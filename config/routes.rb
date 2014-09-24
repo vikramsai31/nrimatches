@@ -1,21 +1,26 @@
 Match::Application.routes.draw do
+  
+ 
   get "photos/new"
   get "photos/create"
   get "photos/update"
   get "photos/edit"
+ 
+ 
   resources :members do
     resources :photos
   end
  
   match 'members/update_select_state/:country_id', :controller=> 'members', :action => 'update_select_state',:via => [:get]
 
-  devise_for :users
+  devise_for :users 
+   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   get 'home', to: 'home#index'
-   resources :users
+   
    #resources :photos
     
   root 'home#index'

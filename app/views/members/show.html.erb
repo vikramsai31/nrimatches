@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+	
+	<%= link_to 'Add/Edit Photo' , new_member_photo_path(current_member.id),class: "btn btn-primary" %>
+
+              		 <div class="new-photo"></div>
   <strong>Firstname:</strong>
   <%= @member.firstname %>
 </p>
@@ -19,7 +23,9 @@
   <strong>Dob:</strong>
   <%= @member.dob %>
 </p>
-
+<% if !@member.photos.blank? %>
 <%= image_tag( @member.photos.first.data.url(:thumb) , :style=>"width:20%")%>
+<% end %>
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>
+ <div id="photo-modal" class="modal hide fade"></div>  

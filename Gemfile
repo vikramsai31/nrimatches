@@ -7,6 +7,7 @@ gem 'mysql2'
 gem 'protected_attributes'
 gem 'devise'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

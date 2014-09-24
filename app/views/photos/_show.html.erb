@@ -1,0 +1,9 @@
+<ul>
+<% @member.photos.each do |photo| %>
+<% if photo.data.file? %>
+<i><%= image_tag( photo.data.url(:thumb) , :class=>"img-rounded")%>
+	<%= link_to "Delete", member_photo_path(@member,photo.id), method: :delete %>
+</i>
+<% end %>
+<% end unless !@photos.nil? %>
+</ul>

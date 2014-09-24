@@ -1,2 +1,121 @@
+<% if user_signed_in? %>
+
+
+<section class="slice bg-3">
+ <div class="w-section inverse">
+
+<div class="container">
+	
+ <div class="row">
+
+                  <div class="col-md-8">
+                  	<% @members.each do |f| %>
+                        <ul class="list-listings">
+                            <li class="featured">
+                                <div class="listing-header bg-2">
+                                   
+                                </div>
+                                <div class="listing-image">
+                                    <img src="images/prv/tmp-img-2.jpg" class="img-responsive" alt="">
+                                </div>
+                                <div class="listing-body">
+                                    <h5>Age/Height: <%= f.age %>/<%= f.height %></h5>
+                                    <h5>Education: <%= f.education%></h5>
+                                    <h5>Profession: <%= f.working_as %></h5>
+                                    <h5>Residency Status: <%= f.residency_status %></h5>
+                                  
+                                </div>
+                                <div class="listing-actions">
+                                   <h5>Like Profile?</h5>
+                                    <a href="#" class="btn btn-two">Send Message</a>
+                                    <h5>
+                                     <%= link_to "View Profile", member_path(f.id)%></h5>
+                                </div>
+                               
+                            </li>
+                            </ul>
+                         <% end %>    
+                          
+                    </div>
+                     <div class="col-md-4">
+                       <h3 class="section-title">Search listings</h3>
+                         <div class="widget widget-highlight">
+                        
+                            <%= form_tag( @members_path, :method=> 'get') do %>
+                                <div class="form-group">
+                             <div class="row">
+                             	<div class="col-xs-8">
+                             	<label>Marital Status</label>
+                             	 <%= select_tag(:marital_status,options_for_select([["Divorced", "Divorced"],["Never Married ","nevermarried"],
+                                              ["Widowed", "widow"],["Awaiting Divorse","ad"],
+                                              ["Annulled", "annulled"] ]),
+                                            
+       {prompt: "Any",class: "form-control"})%>
+       </div>
+       </div>
+       </div>
+       
+       <div class="form-group">
+       <div class="row">
+                             	<div class="col-xs-4">
+                                 <label>Age From</label>
+                                
+<%= select_tag( :age_from,options_for_select((20..50).to_a.collect{|o| [o,o]}),{prompt: "Any",class: "form-control"})%>
+</div>
+  <div class="col-xs-4">
+   <label>Age To</label>
+ 
+<%= select_tag( :age_to,options_for_select((20..50).to_a.collect{|o| [o,o]}),{prompt: "Any",class: "form-control"})%>
+</div>
+<div class="col-xs-4">
+ <label>Height</label>
+ <%= select_tag( :height,options_for_select((4..7).to_a.collect{|o| 0.upto(11).to_a.collect{|k| ["#{o.to_s+'\'' + k.to_s}",o*12+k]}}.flatten(1)),
+                         {prompt: "Any",class: "form-control"})%>
+ </div>
+</div>
+</div>
+
+ <div class="form-group">
+ 	<div class="row">
+ 		<div class="col-xs-6">
+<label>Education Level</label>
+ <%= select_tag(:education,options_for_select([["Less Than High School", "lhs"],["High school diploma or equivalent","hs"],
+                                              ["Some college, no degree", "nd"],["Associate’s degree","ad"],
+                                              ["Bachelor’s degree", "bd"], ["Master’s degree", "md"],
+                                               ["Doctoral or professional degree", "doc"],
+                                               ["Postsecondary non-degree award", "psnd"]]),
+                                             {prompt: "Any",class: "form-control"}) %>
+                                             </div>
+  
+  
+  <div class="col-xs-6">
+  <label>Working For</label>
+  <%= select_tag(:working_with,options_for_select([["Private", "Private"],["Govt","govt"],
+                                              ["Business", "b"],["Entrepreneur","ent"],
+                                              ["None", "none"]]),
+       {prompt: "Any",class: "form-control"})%>
+   </div>
+         
+       </div>
+       </div>
+                                
+                                
+                         <div class="form-group">
+                                <button type="submit" class="btn btn-two">Search</button>
+                                </div>
+                            <% end %>
+                        </div>
+       
+                
+              
+           </div>
+          </div>
+          </section>
+          
+          
+          	
+            
+<% else %>
 <%= render 'layouts/slider_section.html.erb'%>
 <%= render 'layouts/after_slider.html.erb' %>
+<% end %>

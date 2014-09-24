@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_member
   
   def current_member
+   if Member.exists?(:user_id => current_user.id)
   @current_member ||= Member.find_by_user_id!(current_user.id)
-  end
+  else
+    @current_member = nil
+   end
+ end
 
 end

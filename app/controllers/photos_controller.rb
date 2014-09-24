@@ -1,26 +1,42 @@
 class PhotosController < ApplicationController
+before_action :authenticate_user!
   def new
     @member = Member.find(params[:member_id])
-    #@photo = Photo.new()
-    5.times { @member.photos.build }
+   @photo = @member.photos.build
+  
+ 
+    
+
   end
 
   def create
-    @photo = Photo.new([:params])
+    @member = Member.find(params[:member_id])
+    @photo = @member.photos.build(photo_params)
+     respond_to do |format|
    if  @photo.save
-     format.html { redirect_to root_path, notice: 'Photo was successfully created.' }
-    else
-       format.html { render action: 'new' }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+     format.html { render action: 'new' } 
+   else
+     format.html { render action: 'new' }
+     format.json { render json: @photo.errors, status: :unprocessable_entity }
+   end
+   end
+    
+   end
+
+  
+
+  
+  def destroy
+    @member = Member.find(params[:member_id])
+    @photo = @member.photos.find(params[:id])
+    if  @photo.destroy
+   redirect_to :action => 'new'
     end
+    
   end
-
-  def update
-  end
-
-  def edit
-        @member = Member.find(params[:id])
- 5.times { @member.photos.build }
-
-  end
+  
+  private
+  def photo_params
+  params.require(:photo).permit(:data)
+end
 end

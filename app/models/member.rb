@@ -49,6 +49,31 @@ age = calculate_age(dob)
    
 end
 
+def self.search(params)
+ members = all
+ 
+ if params[:marital_status].present?
+   members = members.where(marital_status: params[:marital_status])
+ end
+ 
+ if params[:age_from].present? && params[:age_to].present?
+      cars = cars.where('age between ? and ?', params[:age_from], params[:age_to])
+    end
+   if params[:height].present?
+   members = members.where('height >= ?', params[:height])
+ end
+ 
+  if params[:education].present?
+   members = members.where(education: params[:education])
+ end
+ 
+  if params[:working_with].present?
+   members = members.where(working_with: params[:working_with])
+ end
+ 
+ members
+end
+
 
 private 
 def calculate_age(birthday)

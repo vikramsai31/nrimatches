@@ -103,7 +103,7 @@ CREATE TABLE `members` (
   `disability` char(1) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +112,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (88,'vikram','pendyam',2,'1983-03-09','2014-09-06 17:47:13','2014-09-06 23:07:47','male',233,NULL,'dublin',73,203,'Pale White',107,'citizen','Divorced','abc','Athletic','abc','nonveg','no','no','lhs','engineer','6462034289','Private','hi this is vikram','n',31);
+INSERT INTO `members` VALUES (88,'vikram','pendyam',2,'1983-03-09','2014-09-06 17:47:13','2014-09-16 01:19:04','male',233,NULL,'dublin',73,203,'Pale White',105,'citizen','Divorced','abc','Athletic','abc','nonveg','no','no','lhs','engineer','6462034289','Private','hi this is vikram.This is test','n',31),(89,'abc','yahoo',3,'1983-09-09','2014-09-19 03:24:58','2014-09-19 03:24:58','male',233,NULL,'dublin',72,175,'Brown',233,'citizen','nevermarried','abc','Athletic','abc','veg','no','no','md','','6462034289','','this is second test','n',31);
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +133,7 @@ CREATE TABLE `photos` (
   `data_file_size` int(11) DEFAULT NULL,
   `data_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +142,7 @@ CREATE TABLE `photos` (
 
 LOCK TABLES `photos` WRITE;
 /*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-INSERT INTO `photos` VALUES (10,88,'wed6.png','2014-09-07 02:58:54','2014-09-07 02:58:54','image/png',317520,'2014-09-07 02:58:53'),(11,88,'wed7.png','2014-09-09 03:46:02','2014-09-09 03:46:02','image/png',291005,'2014-09-09 03:46:01');
+INSERT INTO `photos` VALUES (32,88,'vishal1.jpg','2014-09-13 03:42:38','2014-09-13 03:42:38','image/jpeg',44851,'2014-09-13 03:42:37'),(34,89,'wed6.png','2014-09-19 03:28:13','2014-09-19 03:28:13','image/png',317520,'2014-09-19 03:28:11');
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,7 +217,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,50 +226,8 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'vikramsai31@gmail.com','$2a$10$kMozC.yHl67YOxwqF/3gSOtymaWVQGyECN.a1GPqwa1t0LFo5hCxK',NULL,NULL,NULL,2,'2014-08-20 06:23:23','2014-08-08 06:20:21','127.0.0.1','127.0.0.1'),(2,'vikramsai31@yahoo.com','$2a$10$PGMOcdNNzIRamEOlHj30EOCSPejGfmU5hQQvzq7/l.rntZWi8M9T.',NULL,NULL,NULL,1,'2014-08-29 15:28:38','2014-08-29 15:28:38','127.0.0.1','127.0.0.1');
+INSERT INTO `users` VALUES (1,'vikramsai31@gmail.com','$2a$10$kMozC.yHl67YOxwqF/3gSOtymaWVQGyECN.a1GPqwa1t0LFo5hCxK',NULL,NULL,NULL,2,'2014-08-20 06:23:23','2014-08-08 06:20:21','127.0.0.1','127.0.0.1'),(2,'vikramsai31@yahoo.com','$2a$10$PGMOcdNNzIRamEOlHj30EOCSPejGfmU5hQQvzq7/l.rntZWi8M9T.',NULL,NULL,NULL,6,'2014-09-15 23:34:13','2014-09-14 04:24:01','127.0.0.1','127.0.0.1'),(3,'abc@yahoo.com','$2a$10$hdczRdS2IflHXwUdRUg4wuisWKDLPNLPAHmvz5nYo6tAxDfSjuuPq',NULL,NULL,NULL,7,'2014-09-19 03:21:27','2014-09-19 03:17:29','127.0.0.1','127.0.0.1');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users_old`
---
-
-DROP TABLE IF EXISTS `users_old`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users_old` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL DEFAULT '',
-  `encrypted_password` varchar(255) NOT NULL DEFAULT '',
-  `reset_password_token` varchar(255) DEFAULT NULL,
-  `reset_password_sent_at` datetime DEFAULT NULL,
-  `remember_created_at` datetime DEFAULT NULL,
-  `sign_in_count` int(11) NOT NULL DEFAULT '0',
-  `current_sign_in_at` datetime DEFAULT NULL,
-  `last_sign_in_at` datetime DEFAULT NULL,
-  `current_sign_in_ip` varchar(255) DEFAULT NULL,
-  `last_sign_in_ip` varchar(255) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `firstname` varchar(60) DEFAULT NULL,
-  `lastname` varchar(60) DEFAULT NULL,
-  `country_id` int(11) DEFAULT NULL,
-  `state_id` int(11) DEFAULT NULL,
-  `city_id` varchar(60) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `index_users_on_email` (`email`),
-  UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users_old`
---
-
-LOCK TABLES `users_old` WRITE;
-/*!40000 ALTER TABLE `users_old` DISABLE KEYS */;
-INSERT INTO `users_old` VALUES (1,'vikramsai31@gmail.com','$2a$10$xgb1pQOFiM4ivCPDGmbyjuO2f5228lfO1LxBDYACQJZKYwwr1d8yy',NULL,NULL,NULL,1,'2014-08-07 04:58:27','2014-08-07 04:58:27','127.0.0.1','127.0.0.1','2014-08-07 04:58:27','2014-08-07 04:58:27','Vikram','Pendyam',NULL,NULL,NULL);
-/*!40000 ALTER TABLE `users_old` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -281,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-09 22:22:44
+-- Dump completed on 2014-09-23 23:17:32
